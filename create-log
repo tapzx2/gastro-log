@@ -2,6 +2,9 @@
 
 echo "it works"
 
+# to do
+# generate the html page, divs, and distance styling (not styles) you see in index.html via this script
+
 echo "" > images.html
 
 TODAY=$(date "+%s")
