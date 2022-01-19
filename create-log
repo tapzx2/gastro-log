@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+echo "it works"
+
+echo "" > images.html
+
+TODAY=$(date "+%s")
+SCALE=10
+
+for IMAGE in images/*; do
+  HOUR=$(date -r $IMAGE "+%H-%M-%S") 
+  DAY=$(date -r $IMAGE "+%Y-%m-%d")
+  CREATION=$(date -r $IMAGE "+%s")
+  DIFFERENCE=$(( $TODAY - $CREATION ))
+  DIST=$(( $DIFFERENCE / $SCALE ))
+  echo "<p style=\"position: absolute; top: $(($DIST))px\">$DAY $HOUR</p>" >> images.html
+  echo "<img src=\"$IMAGE\" style=\"max-width:150px; position:relative; top: $(($DIST))px;\">" >> images.html
+done;
