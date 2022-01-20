@@ -5,10 +5,14 @@ echo "it works"
 # to do
 # generate the html page, divs, and distance styling (not styles) you see in index.html via this script
 
+OUTFILE=index.html
+echo $OUTFILE
 echo "" > images.html
+echo "" > dates.html
+echo "" > $OUTFILE
 
 TODAY=$(date "+%s")
-SCALE=10
+SCALE=100
 
 for IMAGE in images/*; do
   HOUR=$(date -r $IMAGE "+%H-%M-%S") 
@@ -16,6 +20,53 @@ for IMAGE in images/*; do
   CREATION=$(date -r $IMAGE "+%s")
   DIFFERENCE=$(( $TODAY - $CREATION ))
   DIST=$(( $DIFFERENCE / $SCALE ))
-  echo "<p style=\"position: absolute; top: $(($DIST))px\">$DAY $HOUR</p>" >> images.html
-  echo "<img src=\"$IMAGE\" style=\"max-width:150px; position:relative; top: $(($DIST))px;\">" >> images.html
+  echo "jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg"
+  echo "<p style=\"position: absolute; top: $(($DIST))px\">$DAY $HOUR</p>" >> dates.html
+  echo "<img src=\"jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg\" style=\"max-width:150px; position:absolute; top: $(($DIST))px; left: 200px;\">" >> images.html
 done;
+
+cat > $OUTFILE << EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    img {display:block;}
+    .flex {
+        display:flex;
+    }
+    </style>
+</head>
+<body>
+    <div class="content flex">
+        <div class="time-div flex" style="position: relative;">
+EOF
+
+# add dates
+cat >> $OUTFILE < dates.html
+
+cat >> $OUTFILE << EOF
+
+</div>
+        <div class="images-div flex" style="position: relative;">
+
+EOF
+
+#add images
+cat >> $OUTFILE < images.html
+
+cat >> $OUTFILE << EOF
+
+        </div>
+    </div>
+
+    
+</body>
+</html>
+EOF
+
+rm dates.html
+rm images.html
