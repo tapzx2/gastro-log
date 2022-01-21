@@ -5,12 +5,12 @@ p {
 img {display:block;
     width:150px;
     position:absolute;
-    left: 50px;
+    left: 200px;
    }
 .flex {
    display:flex;
 }
 
 .time-div {
-    width: 150px;
+    white-space: nowrap;
 }
