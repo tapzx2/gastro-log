@@ -1,8 +1,16 @@
+p {
+    margin:0;
+    padding:0;
+}
 img {display:block;
     width:150px;
     position:absolute;
-    left: 200px;
+    left: 50px;
    }
 .flex {
    display:flex;
+}
+
+.time-div {
+    width: 150px;
 }
