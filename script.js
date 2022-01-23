@@ -42,6 +42,8 @@ function change_photo_location() {
   set_top_in_dom(photos[photos.length - 1]);
 }
 
+window.bind("load", change_photo_location());
+
 /* functions */
 
 function set_top_in_dom(box) {
