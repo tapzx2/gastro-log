@@ -3,7 +3,8 @@
 echo "it works"
 
 # to do
-# generate the html page, divs, and distance styling (not styles) you see in index.html via this script
+# make this script reflect what is seen in index.html
+# maybe scale shouldn't be touched, leave them as og values and let this be a javascript feature
 
 OUTFILE=index.html
 echo $OUTFILE
