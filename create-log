@@ -23,7 +23,7 @@ for IMAGE in images/*; do
   DIST=$(( $DIFFERENCE / $SCALE ))
   echo "jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg"
   echo "<p style=\"position: absolute; top: $(($DIST))px\">$DAY $HOUR</p>" >> dates.html
-  echo "<img src=\"jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg\" style=\"data-top: $(($DIST))px; left: 200px;\">" >> images.html
+  echo "<img src=\"jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg\" data-top=\"$(($DIST))px\";>" >> images.html
 done;
 
 cat > $OUTFILE << EOF
