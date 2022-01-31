@@ -23,6 +23,17 @@ function incrementCounter() {
 
 // my code
 
+// locs = {} // parameterized format: {photo_num:[top_val,bottom_val,left_val,right_val]}
+
+// get all photos
+// for photo in photos:
+//   for loc in setlocs:
+//     if intercept(photo.location, loc):
+//         photo.style.left = 10 + current.x + previous.width + "px"; // margin!
+//   setlocs.add(key=photos index value, value=photo.location)
+//
+
+
 console.log("it works");
 function change_photo_location() {
   let photos = document.querySelectorAll("img");

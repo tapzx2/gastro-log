@@ -13,7 +13,7 @@ echo "" > dates.html
 echo "" > $OUTFILE
 
 TODAY=$(date "+%s")
-SCALE=100
+SCALE=50
 
 for IMAGE in images/*; do
   HOUR=$(date -r $IMAGE "+%H-%M-%S") 
@@ -59,7 +59,7 @@ cat >> $OUTFILE << EOF
         </div>
     </div>
 
-    <script src="script2.js"></script>
+    <script src="script3.js"></script>
 </body>
 </html>
 EOF
