@@ -23,7 +23,7 @@ for IMAGE in images/*; do
   DIST=$(( $DIFFERENCE / $SCALE ))
   echo "jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg"
   echo "<p style=\"position: absolute; top: $(($DIST))px\">$DAY $HOUR</p>" >> dates.html
-  echo "<img src=\"jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg\" style=\"max-width:150px; position:absolute; top: $(($DIST))px; left: 200px;\">" >> images.html
+  echo "<img src=\"jpgs/$(basename $IMAGE | cut -d'.' -f1).jpg\" style=\"data-top: $(($DIST))px; left: 200px;\">" >> images.html
 done;
 
 cat > $OUTFILE << EOF
@@ -33,13 +33,8 @@ cat > $OUTFILE << EOF
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    img {display:block;}
-    .flex {
-        display:flex;
-    }
-    </style>
+    <title>Gastro Log</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="content flex">
@@ -64,7 +59,7 @@ cat >> $OUTFILE << EOF
         </div>
     </div>
 
-    
+    <script src="script2.js"></script>
 </body>
 </html>
 EOF
